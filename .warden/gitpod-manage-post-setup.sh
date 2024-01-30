@@ -30,7 +30,7 @@ if [ -f "$file_path" ]; then
     warden env exec php-fpm php bin/magento a:c:i
     wget https://files.magerun.net/n98-magerun2.phar
     chmod +x ./n98-magerun2.phar
-    ./n98-magerun2.phar sys:cron:run update_novaposhta_catalog
+    #./n98-magerun2.phar sys:cron:run update_novaposhta_catalog
 else
     echo "File $file_path not found."
     exit 1
