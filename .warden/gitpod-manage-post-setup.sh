@@ -24,6 +24,10 @@ if [ -f "$file_path" ]; then
     warden env exec php-fpm php bin/magento cache:flush
     warden env exec php-fpm php bin/magento cron:install
     warden env exec php-fpm php bin/magento cron:run
+    warden env exec php-fpm bin/magento config:set novaposhta_catalog/catalog/apikey $NOVAPOSHTA_API_KEY
+    warden env exec php-fpm bin/magento config:set carriers/novaposhtashipping/active 1
+    warden env exec php-fpm bin/magento config:set carriers/novaposhtashipping/api_key $NOVAPOSHTA_API_KEY
+    warden env exec php-fpm php bin/magento a:c:i
     wget https://files.magerun.net/n98-magerun2.phar
     chmod +x ./n98-magerun2.phar
     ./n98-magerun2.phar sys:cron:run update_novaposhta_catalog
